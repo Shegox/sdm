@@ -235,11 +235,11 @@
         </plugins>
     </build>
     <distributionManagement>
-        <repository>
-            <id>artifactory</id>
-            <name>Artifactory_DMZ</name>
-            <url>https://common.repositories.cloud.sap/artifactory/cap-sdm-java</url>
-        </repository>
+      <repository>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/octocat/hello-world</url>
+      </repository>
     </distributionManagement>
          
     <scm>
