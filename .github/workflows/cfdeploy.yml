@@ -12,6 +12,7 @@ on:
 
 permissions:
   pull-requests: read
+  packages: read
 
 jobs:
   Deploy:
@@ -39,12 +40,6 @@ jobs:
             exit 1
           fi
 
-      - name: Deleting the sdm directory for fresh build
-        run: |
-          pwd
-          cd
-          rm -rf .m2/repository/com/sap/cds
-
       - name: Set REPOSITORY_ID
         id: set_repository_id
         run: |
@@ -61,23 +56,27 @@ jobs:
             fi
           fi
 
-      - name: Prepare and Deploy to Cloud Foundry
-        run: |
-          echo "Current Branch......"
-          git branch
-          pwd
-          cd /sapmnt/home/I355238/actions-runner/_work/sdm/sdm/cap-notebook/demoapp
-          
-          # Replace placeholder with actual REPOSITORY_ID value
-          sed -i 's|__REPOSITORY_ID__|'${{ steps.set_repository_id.outputs.repository_id }}'|g' ./mta.yaml
-          
-          mbt build
+      # Build with Maven
+      - name: Build with Maven
+        run: mvn clean install
+
+     # - name: Prepare and Deploy to Cloud Foundry
+     #   run: |
+     #     echo "Current Branch......"
+     #     git branch
+     #     pwd
+     #     cd /sapmnt/home/I355238/actions-runner/_work/sdm/sdm/cap-notebook/demoapp
+     #     
+     #     # Replace placeholder with actual REPOSITORY_ID value
+     #     sed -i 's|__REPOSITORY_ID__|'${{ steps.set_repository_id.outputs.repository_id }}'|g' ./mta.yaml
+     #     
+     #     mbt build#
 
           # Install cf CLI plugin
-          cf install-plugin multiapps -f
+#          cf install-plugin multiapps -f
 
           # Login to Cloud Foundry again to ensure session is active
-          cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_USER }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ github.event.inputs.cf_space }}
+ #         cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_USER }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ github.event.inputs.cf_space }}
 
           # Deploy the application
           echo "Running cf deploy"
