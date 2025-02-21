@@ -172,7 +172,7 @@
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/Shegox/sdm</url>
+          <url>https://maven.pkg.github.com/shegox/sdm</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
