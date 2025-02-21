@@ -136,7 +136,7 @@
     {
         "kind": 1,
         "language": "markdown",
-        "value": "add the following dependency to the `srv/pom.xml`:\n```\n<dependency>\n    <groupId>com.sap.cds</groupId>\n    <artifactId>sdm</artifactId>\n    <version>1.0.0-SNAPSHOT</version>\n</dependency>\n```        ",
+        "value": "add the following dependency to the `srv/pom.xml`:\n```\n<dependency>\n    <groupId>com.sap.cds</groupId>\n    <artifactId>sdm</artifactId>\n    <version>1.0.3-SNAPSHOT</version>\n</dependency>\n```        ",
         "outputs": []
     },
     {
