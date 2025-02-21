@@ -47,6 +47,8 @@ jobs:
           fi
 
       - name: Build with Maven
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: | 
           cd cap-notebook/demoapp
           
