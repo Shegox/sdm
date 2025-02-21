@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   Deploy:
-    runs-on: cap-java
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
