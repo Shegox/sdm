@@ -202,5 +202,17 @@
             <url>https://common.repositories.cloud.sap/artifactory/cap-java</url>
         </repository>
     </distributionManagement>
-
+<repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/Shegox/sdm</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
 </project>
